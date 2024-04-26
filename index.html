@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Emoji Embeddings</title>
+      
+    <script src="https://unpkg.com/jspsych@7.2.1"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-image-button-response@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-fullscreen@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-audio-button-response@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-audio-keyboard-response@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-multi-select@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-text@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-button-response@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-likert@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-call-function@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-preload@1.1.0"></script>
+    <link href="https://unpkg.com/jspsych@7.2.1/css/jspsych.css" rel="stylesheet" type="text/css" />
+     <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe"></script>
+      
+  </head>
+  <body></body>
+    
+  <script>
+      
+   // saving and start experiment functions       
+    var jsPsych = initJsPsych({
+        show_progress_bar:true,
+        on_data_update: function(){
+            var filename = "emoji_triplets_" + subject_id; //change to file name
+            jsPsych.data.addProperties({worker_id: urlvar.workerId});
+            timeline.push(save_data);
+        },
+        on_finish: function(){
+            var filename = "emoji_triplets_" + subject_id;
+            jsPsych.data.addProperties({worker_id: urlvar.workerId});
+            timeline.push(save_data);
+           // jsPsych.data.get().localSave('csv','isaac_data.csv');
+
+        }
+    });
+      
+      const save_data = {
+                type: jsPsychPipe,
+                action: "save",
+                experiment_id: "pEIpA6H3ZLvv",
+                filename: filename,
+                data_string: ()=>jsPsych.data.get().csv()
+              };
+
+          /* create timeline */
+    var timeline = [];
+  
+     const subject_id = jsPsych.randomization.randomID(10);
+            
+       var filename = "emoji_triplets_" + subject_id;
+      var urlvar = jsPsych.data.urlVariables();  
+      
+    
+    var preload = {
+        type: jsPsychPreload,
+        auto_preload: true,
+        images: ['resources/1.png',
+                'resources/10.png',
+                'resources/100.png',
+                'resources/101.png',
+                'resources/102.png',
+                'resources/104.png',
+                'resources/108.png',
+                'resources/109.png',
+                'resources/11.png',
+                'resources/110.png',
+                'resources/111.png',
+                'resources/112.png',
+                'resources/113.png',
+                'resources/114.png',
+                'resources/115.png',
+                'resources/116.png',
+                'resources/117.png',
+                'resources/118.png',
+                'resources/119.png',
+                'resources/12.png',
+                'resources/120.png',
+                'resources/13.png',
+                'resources/131.png',
+                'resources/134.png',
+                'resources/14.png',
+                'resources/143.png',
+                'resources/147.png',
+                'resources/15.png',
+                'resources/157.png',
+                'resources/16.png',
+                'resources/163.png',
+                'resources/164.png',
+                'resources/169.png',
+                'resources/17.png',
+                'resources/173.png',
+                'resources/18.png',
+                'resources/182.png',
+                'resources/183.png',
+                'resources/186.png',
+                'resources/187.png',
+                'resources/19.png',
+                'resources/2.png',
+                'resources/20.png',
+                'resources/204.png',
+                'resources/21.png',
+                'resources/22.png',
+                'resources/23.png',
+                'resources/24.png',
+                'resources/25.png',
+                'resources/26.png',
+                'resources/261.png',
+                'resources/264.png',
+                'resources/27.png',
+                'resources/28.png',
+                'resources/29.png',
+                'resources/3.png',
+                'resources/30.png',
+                'resources/31.png',
+                'resources/32.png',
+                'resources/33.png',
+                'resources/34.png',
+                'resources/35.png',
+                'resources/36.png',
+                'resources/37.png',
+                'resources/39.png',
+                'resources/4.png',
+                'resources/40.png',
+                'resources/41.png',
+                'resources/42.png',
+                'resources/44.png',
+                'resources/45.png',
+                'resources/46.png',
+                'resources/47.png',
+                'resources/48.png',
+                'resources/49.png',
+                'resources/5.png',
+                'resources/50.png',
+                'resources/501.png',
+                'resources/51.png',
+                'resources/52.png',
+                'resources/53.png',
+                'resources/54.png',
+                'resources/55.png',
+                'resources/56.png',
+                'resources/57.png',
+                'resources/58.png',
+                'resources/59.png',
+                'resources/6.png',
+                'resources/60.png',
+                'resources/61.png',
+                'resources/62.png',
+                'resources/63.png',
+                'resources/64.png',
+                'resources/65.png',
+                'resources/66.png',
+                'resources/67.png',
+                'resources/68.png',
+                'resources/69.png',
+                'resources/7.png',
+                'resources/70.png',
+                'resources/71.png',
+                'resources/72.png',
+                'resources/73.png',
+                'resources/74.png',
+                'resources/75.png',
+                'resources/76.png',
+                'resources/77.png',
+                'resources/78.png',
+                'resources/79.png',
+                'resources/8.png',
+                'resources/80.png',
+                'resources/81.png',
+                'resources/82.png',
+                'resources/83.png',
+                'resources/84.png',
+                'resources/85.png',
+                'resources/86.png',
+                'resources/87.png',
+                'resources/88.png',
+                'resources/89.png',
+                'resources/9.png',
+                'resources/90.png',
+                'resources/91.png',
+                'resources/92.png',
+                'resources/93.png',
+                'resources/94.png',
+                'resources/95.png',
+                'resources/96.png',
+                'resources/97.png',
+                'resources/98.png'],
+        show_progress_bar: true,
+        message: "Loading experiment files...",
+        error_message: "Oops! There's a problem loading files. Please refresh the page to try again."
+    }  
+    timeline.push(preload);
+    
+      
+    var items = [{item: 'resources/1.png'},
+                {item: 'resources/10.png'},
+                {item: 'resources/100.png'},
+                {item: 'resources/101.png'},
+                {item: 'resources/102.png'},
+                {item: 'resources/104.png'},
+                {item: 'resources/108.png'},
+                {item: 'resources/109.png'},
+                {item: 'resources/11.png'},
+                {item: 'resources/110.png'},
+                {item: 'resources/111.png'},
+                {item: 'resources/112.png'},
+                {item: 'resources/113.png'},
+                {item: 'resources/114.png'},
+                {item: 'resources/115.png'},
+                {item: 'resources/116.png'},
+                {item: 'resources/117.png'},
+                {item: 'resources/118.png'},
+                {item: 'resources/119.png'},
+                {item: 'resources/12.png'},
+                {item: 'resources/120.png'},
+                {item: 'resources/13.png'},
+                {item: 'resources/131.png'},
+                {item: 'resources/134.png'},
+                {item: 'resources/14.png'},
+                {item: 'resources/143.png'},
+                {item: 'resources/147.png'},
+                {item: 'resources/15.png'},
+                {item: 'resources/157.png'},
+                {item: 'resources/16.png'},
+                {item: 'resources/163.png'},
+                {item: 'resources/164.png'},
+                {item: 'resources/169.png'},
+                {item: 'resources/17.png'},
+                {item: 'resources/173.png'},
+                {item: 'resources/18.png'},
+                {item: 'resources/182.png'},
+                {item: 'resources/183.png'},
+                {item: 'resources/186.png'},
+                {item: 'resources/187.png'},
+                {item: 'resources/19.png'},
+                {item: 'resources/2.png'},
+                {item: 'resources/20.png'},
+                {item: 'resources/204.png'},
+                {item: 'resources/21.png'},
+                {item: 'resources/22.png'},
+                {item: 'resources/23.png'},
+                {item: 'resources/24.png'},
+                {item: 'resources/25.png'},
+                {item: 'resources/26.png'},
+                {item: 'resources/261.png'},
+                {item: 'resources/264.png'},
+                {item: 'resources/27.png'},
+                {item: 'resources/28.png'},
+                {item: 'resources/29.png'},
+                {item: 'resources/3.png'},
+                {item: 'resources/30.png'},
+                {item: 'resources/31.png'},
+                {item: 'resources/32.png'},
+                {item: 'resources/33.png'},
+                {item: 'resources/34.png'},
+                {item: 'resources/35.png'},
+                {item: 'resources/36.png'},
+                {item: 'resources/37.png'},
+                {item: 'resources/39.png'},
+                {item: 'resources/4.png'},
+                {item: 'resources/40.png'},
+                {item: 'resources/41.png'},
+                {item: 'resources/42.png'},
+                {item: 'resources/44.png'},
+                {item: 'resources/45.png'},
+                {item: 'resources/46.png'},
+                {item: 'resources/47.png'},
+                {item: 'resources/48.png'},
+                {item: 'resources/49.png'},
+                {item: 'resources/5.png'},
+                {item: 'resources/50.png'},
+                {item: 'resources/501.png'},
+                {item: 'resources/51.png'},
+                {item: 'resources/52.png'},
+                {item: 'resources/53.png'},
+                {item: 'resources/54.png'},
+                {item: 'resources/55.png'},
+                {item: 'resources/56.png'},
+                {item: 'resources/57.png'},
+                {item: 'resources/58.png'},
+                {item: 'resources/59.png'},
+                {item: 'resources/6.png'},
+                {item: 'resources/60.png'},
+                {item: 'resources/61.png'},
+                {item: 'resources/62.png'},
+                {item: 'resources/63.png'},
+                {item: 'resources/64.png'},
+                {item: 'resources/65.png'},
+                {item: 'resources/66.png'},
+                {item: 'resources/67.png'},
+                {item: 'resources/68.png'},
+                {item: 'resources/69.png'},
+                {item: 'resources/7.png'},
+                {item: 'resources/70.png'},
+                {item: 'resources/71.png'},
+                {item: 'resources/72.png'},
+                {item: 'resources/73.png'},
+                {item: 'resources/74.png'},
+                {item: 'resources/75.png'},
+                {item: 'resources/76.png'},
+                {item: 'resources/77.png'},
+                {item: 'resources/78.png'},
+                {item: 'resources/79.png'},
+                {item: 'resources/8.png'},
+                {item: 'resources/80.png'},
+                {item: 'resources/81.png'},
+                {item: 'resources/82.png'},
+                {item: 'resources/83.png'},
+                {item: 'resources/84.png'},
+                {item: 'resources/85.png'},
+                {item: 'resources/86.png'},
+                {item: 'resources/87.png'},
+                {item: 'resources/88.png'},
+                {item: 'resources/89.png'},
+                {item: 'resources/9.png'},
+                {item: 'resources/90.png'},
+                {item: 'resources/91.png'},
+                {item: 'resources/92.png'},
+                {item: 'resources/93.png'},
+                {item: 'resources/94.png'},
+                {item: 'resources/95.png'},
+                {item: 'resources/96.png'},
+                {item: 'resources/97.png'},
+                {item: 'resources/98.png'},];
+                 
+      var faces_arr = ['resources/1.png',
+                      'resources/10.png',
+                      'resources/100.png',
+                      'resources/101.png',
+                      'resources/102.png',
+                      'resources/104.png',
+                      'resources/108.png',
+                      'resources/109.png',
+                      'resources/11.png',
+                      'resources/110.png',
+                      'resources/111.png',
+                      'resources/112.png',
+                      'resources/113.png',
+                      'resources/114.png',
+                      'resources/115.png',
+                      'resources/116.png',
+                      'resources/117.png',
+                      'resources/118.png',
+                      'resources/119.png',
+                      'resources/12.png',
+                      'resources/120.png',
+                      'resources/13.png',
+                      'resources/131.png',
+                      'resources/134.png',
+                      'resources/14.png',
+                      'resources/143.png',
+                      'resources/147.png',
+                      'resources/15.png',
+                      'resources/157.png',
+                      'resources/16.png',
+                      'resources/163.png',
+                      'resources/164.png',
+                      'resources/169.png',
+                      'resources/17.png',
+                      'resources/173.png',
+                      'resources/18.png',
+                      'resources/182.png',
+                      'resources/183.png',
+                      'resources/186.png',
+                      'resources/187.png',
+                      'resources/19.png',
+                      'resources/2.png',
+                      'resources/20.png',
+                      'resources/204.png',
+                      'resources/21.png',
+                      'resources/22.png',
+                      'resources/23.png',
+                      'resources/24.png',
+                      'resources/25.png',
+                      'resources/26.png',
+                      'resources/261.png',
+                      'resources/264.png',
+                      'resources/27.png',
+                      'resources/28.png',
+                      'resources/29.png',
+                      'resources/3.png',
+                      'resources/30.png',
+                      'resources/31.png',
+                      'resources/32.png',
+                      'resources/33.png',
+                      'resources/34.png',
+                      'resources/35.png',
+                      'resources/36.png',
+                      'resources/37.png',
+                      'resources/39.png',
+                      'resources/4.png',
+                      'resources/40.png',
+                      'resources/41.png',
+                      'resources/42.png',
+                      'resources/44.png',
+                      'resources/45.png',
+                      'resources/46.png',
+                      'resources/47.png',
+                      'resources/48.png',
+                      'resources/49.png',
+                      'resources/5.png',
+                      'resources/50.png',
+                      'resources/501.png',
+                      'resources/51.png',
+                      'resources/52.png',
+                      'resources/53.png',
+                      'resources/54.png',
+                      'resources/55.png',
+                      'resources/56.png',
+                      'resources/57.png',
+                      'resources/58.png',
+                      'resources/59.png',
+                      'resources/6.png',
+                      'resources/60.png',
+                      'resources/61.png',
+                      'resources/62.png',
+                      'resources/63.png',
+                      'resources/64.png',
+                      'resources/65.png',
+                      'resources/66.png',
+                      'resources/67.png',
+                      'resources/68.png',
+                      'resources/69.png',
+                      'resources/7.png',
+                      'resources/70.png',
+                      'resources/71.png',
+                      'resources/72.png',
+                      'resources/73.png',
+                      'resources/74.png',
+                      'resources/75.png',
+                      'resources/76.png',
+                      'resources/77.png',
+                      'resources/78.png',
+                      'resources/79.png',
+                      'resources/8.png',
+                      'resources/80.png',
+                      'resources/81.png',
+                      'resources/82.png',
+                      'resources/83.png',
+                      'resources/84.png',
+                      'resources/85.png',
+                      'resources/86.png',
+                      'resources/87.png',
+                      'resources/88.png',
+                      'resources/89.png',
+                      'resources/9.png',
+                      'resources/90.png',
+                      'resources/91.png',
+                      'resources/92.png',
+                      'resources/93.png',
+                      'resources/94.png',
+                      'resources/95.png',
+                      'resources/96.png',
+                      'resources/97.png',
+                      'resources/98.png'];
+      
+    
+   //to shuffle the array of button choices at the beginning of the experiment   
+    function shuffle(array) {
+        let currentIndex = array.length,  randomIndex;
+        // While there remain elements to shuffle.
+        while (currentIndex != 0) {
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+        }
+        return array;
+    }
+        
+    var test_stimuli = [];
+    
+    // to get a random item from the array
+    function getRandomItems(arr) {
+        var temp_array = jsPsych.randomization.sampleWithoutReplacement(arr, 2);
+          arr = arr.filter(e => e !== temp_array[0]);
+          arr = arr.filter(e => e !== temp_array[1]);
+        return temp_array;
+    }
+      
+      
+    /* define welcome message trial */
+    var welcome = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: "Welcome to the experiment. Press any key to begin."
+    };
+    timeline.push(welcome);
+      
+      
+    timeline.push({
+      type: jsPsychFullscreen,
+      fullscreen_mode: true
+    });    
+         
+   /* define consent trial */
+    var consent = {
+       type: jsPsychImageButtonResponse,
+       stimulus: "consent_SONA.png",
+       choices: ["Consent & Continue"]
+   };
+   timeline.push(consent);  
+    
+    
+ //   deftones  
+          
+    /* define testing instructions */
+    var instructions = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: "<p>In each trial of this task, you will see three emojis: one target emoji on top, and two emoji choices beneath the target emoji." +
+        "</p><p>For each trial, <strong>please select the emoji that conveys the most similar emotion to the target emoji.</strong>"+
+        "<p>There will be two  rounds of this task with 250 trials per round. You will have the opportunity to take a break after each round.</p>"+
+          "<p>Click 'Continue' to begin the test.</p>",
+        choices: ["Continue"],
+      post_trial_gap: 2000
+    };
+    timeline.push(instructions);  
+      
+      
+      var fixation = {
+          type: jsPsychHtmlKeyboardResponse,
+            stimulus: '+',
+            choices: "NO_KEYS",
+            trial_duration: 500
+        };
+      timeline.push(fixation);
+      
+      var arr_pair = [];
+
+      // define the trials!
+      var trial = {
+          type: jsPsychImageButtonResponse,
+            stimulus: jsPsych.timelineVariable('item'),         
+            choices: function(){
+                shuffle(faces_arr);
+                arr_pair = getRandomItems(faces_arr);
+                return arr_pair;
+            },
+            button_html: '<button class="jspsych-btn"><img src= %choice%></button>',
+            on_finish: function(data){
+                shuffle(faces_arr);
+                data.choices = arr_pair;
+            }
+      };
+      
+      
+      // defining the procedure!
+
+      
+var face_procedure = {
+    timeline: [fixation, trial],
+    timeline_variables: items,
+    randomize_order: true,
+    sample: {
+        type: 'with-replacement',
+        size: 5 // CHANGE FOR FINAL EXPERIMENT TO FULL # OF TRIALS
+    }
+};
+      
+      
+    var quick_break = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: "Nice job! Feel free to take a quick break, then click 'Continue' when you are ready proceed to the next round." +
+        "<p>Remember, your task is to <strong>select the emoji that conveys the most similar emotion to the target emoji on top.</strong>",
+        choices: ["Continue"]
+    };
+      
+      
+      
+      
+
+timeline.push(face_procedure);
+timeline.push(quick_break);
+timeline.push(face_procedure);
+//timeline.push(quick_break);      
+//timeline.push(face_procedure);
+//timeline.push(quick_break);      
+//timeline.push(face_procedure);
+ 
+      
+    
+      
+var demographic_instructions = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: "<p>Awesome!<p>For this last part of the experiment, please provide us with information about yourself.</p> ",
+      choices: ["Continue"],
+      post_trial_gap: 1000
+    };
+timeline.push(demographic_instructions);
+      
+      
+var demographics = {
+    type: jsPsychSurveyMultiSelect,
+    questions: [
+      {prompt: "Which categories describe you? Select all that apply to you:", 
+        options: ["American Indian or Alaska Naive - For example, Navajo Nation, Mayan", 
+                  "Asian - For example, Chinese, Asian Indian",
+                  "Black or African American - For example, Jamaican, Ethiopian",
+                  "Hispanic or Latino - For example, Mexican or Mexican American, Puerto Rican, Salvadoran",
+                 "Middle Eastern or North African - For example, Lebanese, Iranian, Moroccan",
+                 "Native Hawaiian or Other Pacific Islander - For example, Somoan, Fijian",
+                 "White - For example, German, Irish",
+                 "Some other race, ethnicity, or origin",
+                 "I prefer not to answer"], 
+        horizontal: false,
+        required: true,
+        name: 'race_eth'}
+    ]};
+    timeline.push(demographics);  
+
+    
+      
+    var id_age = {
+      type: jsPsychSurveyText,
+      questions: [{prompt: "Please enter your age (in years):", rows: 1, columns: 6, name: "age", required: true}, 
+                  {prompt: "How do you currently describe your gender identity? Please specify.", rows: 1, columns: 60, name: "gender"},
+                  {prompt: "What is your ZIP code?", rows : 1, columns: 6, name: "zip"}
+                 ]
+    };
+    timeline.push(id_age);
+      
+      
+      
+   var goodbye = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: function(){
+        output = "Woohoo! You have finished the experiment. <br>";
+//          if(urlvar.workerId.length > 7){   //for if we need to pay ppl
+   //           output = output + "<strong> Here is your secret code: " + //secret_code + "</strong><br>";
+     //     }
+        output = output + "You may now close this screen. Goodbye!<br><br>";
+      return output;
+      },
+      choices: ["Complete Experiment"]    
+   };
+    timeline.push(goodbye);
+
+
+      
+      
+       
+      
+    jsPsych.run(timeline);
+
+
+
+  </script>
+  </html>
+
+<!--
+
+-->
